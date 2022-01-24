@@ -7,7 +7,7 @@ import { registerError } from "../../../actions/AccountAction";
 import { WithApiService } from "../../../with-api-service/with-api-service";
 class RegistrationPage extends Component {
    state = {
-      name: "",
+      firstName: "",
       lastName: "",
       email: "",
       age: "",
@@ -16,7 +16,7 @@ class RegistrationPage extends Component {
 
    onFinish = (event) => {
       const data = {
-         name: event.name,
+         firstName: event.name,
          lastName: event.lastname,
          age: event.age,
          email: event.email,

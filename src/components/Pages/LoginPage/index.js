@@ -22,7 +22,7 @@ class LoginPage extends Component {
          .login(event)
          .then((res) => {
             if (res.hasOwnProperty("statusText")) {
-               const error = "Невірний логін або пароль.";
+               const error = "Wrong login or password.";
                loginError(error);
             } else {
                loginWithToken(res.data);

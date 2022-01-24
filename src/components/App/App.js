@@ -3,6 +3,9 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage/";
 import RegistrationPage from "../Pages/RegisterPage/";
 import ConfirmEmail from "../Pages/ConfirmEmail/";
+//import Header from "../Pages/Header";
+//import AdminPage from "../Admin/AdminPage/";
+import StudentProfile from "../Pages/StudentProfile";
 
 class App extends Component {
    PrivateRoute({ children, ...rest }) {
@@ -42,9 +45,9 @@ class App extends Component {
    render() {
       return (
          <Routes>
-            <Route path="/" exact render={() => <LoginPage />} />
-            <Route path="/register" exact render={() => <RegistrationPage />} />
-            <Route path="/confirmemail" exact render={() => <ConfirmEmail />} />
+            <Route path="/" exact element={<LoginPage />}></Route>
+            <Route path="/register" exact element={<RegistrationPage />}></Route>
+            <Route path="/confirmemail" exact element={<ConfirmEmail />}></Route>
          </Routes>
       );
    }

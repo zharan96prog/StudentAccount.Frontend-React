@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "/api";
+axios.defaults.baseURL = "http://localhost:39460/api";
 axios.interceptors.request.use(
    (config) => {
       const token = window.localStorage.getItem("studAcc-Token");
@@ -23,8 +23,8 @@ const requests = {
 };
 
 const User = {
-   register: (user) => requests.post(`/user/register`, user),
-   login: (user) => requests.post(`/user/login`, user)
+   register: (user) => requests.post(`/auth/register`, user),
+   login: (user) => requests.post(`/auth/login`, user)
 };
 export default class ApiStoreService {
    async register(user) {

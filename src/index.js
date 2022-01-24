@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App/App";
-import "../node_modules/antd/dist/antd.css";
+import "../node_modules/antd/dist/antd.min.css";
 import "./index.css";
-import { Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createBrowserHistory } from "history";
 import ApiStoreService from "./services/api-service";
 import { ApiStoreServiceProvider } from "./components/api-service-context/api-service-context";
 import store from "./store";
-import 'bootstrap/dist/css/bootstrap.min.css';
-const apiStoreService = new ApiStoreService();
 
+const apiStoreService = new ApiStoreService();
 export const history = createBrowserHistory();
 
 ReactDOM.render(
