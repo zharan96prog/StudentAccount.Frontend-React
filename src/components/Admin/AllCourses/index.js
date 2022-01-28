@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from "react";
-import Header from "../../Pages/Header";
-
-class StudentPage extends Component {
+import Header from "../../Pages/Header/";
+class AllCourses extends Component {
    render() {
       return (
          <Fragment>
             <Header />
-            <h2>Student page</h2>
+            <h1>Courses</h1>
          </Fragment>
       );
    }
 }
-export default StudentPage;
+export default AllCourses;

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage/";
 import RegistrationPage from "../Pages/RegisterPage/";
 import ConfirmEmail from "../Pages/ConfirmEmail/";
-//import Header from "../Pages/Header";
-//import AdminPage from "../Admin/AdminPage/";
+import AdminPage from "../Admin/AdminPage/";
+import StudentPage from "../Pages/StudentPage";
+import AllCourses from "../Admin/AllCourses";
+import AdminEditUser from "../Admin/EditUser";
 import StudentProfile from "../Pages/StudentProfile";
 
 class App extends Component {
@@ -16,7 +18,7 @@ class App extends Component {
                localStorage.getItem("studAcc-Token") ? (
                   children
                ) : (
-                  <Navigate to={{ pathname: "/", state: { from: location } }} />
+                  <Redirect to={{ pathname: "/", state: { from: location } }} />
                )
             }
          />
@@ -32,7 +34,7 @@ class App extends Component {
                   return children;
                } else {
                   return (
-                     <Navigate
+                     <Redirect
                         to={{ pathname: "/main", state: { from: location } }}
                      />
                   );
@@ -44,11 +46,26 @@ class App extends Component {
 
    render() {
       return (
-         <Routes>
-            <Route path="/" exact element={<LoginPage />}></Route>
-            <Route path="/register" exact element={<RegistrationPage />}></Route>
-            <Route path="/confirmemail" exact element={<ConfirmEmail />}></Route>
-         </Routes>
+         <Switch>
+            <Route path="/" exact render={() => <LoginPage />} />
+            <Route path="/register" exact render={() => <RegistrationPage />} />
+            <Route path="/confirmemail" exact render={() => <ConfirmEmail />} />
+            <this.RoleRoute path="/admin" exact>
+               <AdminPage />
+            </this.RoleRoute>
+            <this.PrivateRoute path="/main" exact>
+               <StudentPage />
+            </this.PrivateRoute>
+            <this.RoleRoute path="/admin/all-courses" exact>
+               <AllCourses />
+            </this.RoleRoute>
+            <this.RoleRoute exact path="/admin/edit/:id">
+               <AdminEditUser />
+            </this.RoleRoute>
+            <this.PrivateRoute path="/main/profile" exact>
+               <StudentProfile />
+            </this.PrivateRoute>
+         </Switch>
       );
    }
 }

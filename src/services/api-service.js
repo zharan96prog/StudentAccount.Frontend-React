@@ -24,7 +24,10 @@ const requests = {
 
 const User = {
    register: (user) => requests.post(`/auth/register`, user),
-   login: (user) => requests.post(`/auth/login`, user)
+   login: (user) => requests.post(`/auth/login`, user),
+   listUsers: (numberPage) => requests.get(`/user/adminList/${numberPage}`),
+   updateUser: (user) => requests.put("/user/", user),
+   getUserById: (Id) => requests.get(`/user/${Id}`),
 };
 export default class ApiStoreService {
    async register(user) {
@@ -50,5 +53,35 @@ export default class ApiStoreService {
             return error.response;
          });
       return data;
+   }
+   async getAllUsers(numberPage) {
+      const ListUsers = await User.listUsers(numberPage)
+         .then((responce) => {
+            return responce;
+         })
+         .catch((error) => {
+            return error.responce;
+         });
+      return ListUsers;
+   }
+   async updateUser(user) {
+      const users = await User.updateUser(user)
+         .then((responce) => {
+            return responce;
+         })
+         .catch((error) => {
+            return error.response;
+         });
+      return users;
+   }
+   async getUserById(Id) {
+      const user = await User.getUserById(Id)
+         .then((responce) => {
+            return responce;
+         })
+         .catch((error) => {
+            return error.response;
+         });
+      return user;
    }
 }

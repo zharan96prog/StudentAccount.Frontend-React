@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/App/App";
 import "../node_modules/antd/dist/antd.min.css";
 import "./index.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createBrowserHistory } from "history";
 import ApiStoreService from "./services/api-service";
