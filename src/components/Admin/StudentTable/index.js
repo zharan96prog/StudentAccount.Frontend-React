@@ -64,30 +64,30 @@ class StudentTable extends Component {
       const { userIdLoaded } = this.props;
       userIdLoaded(id);
    };
-   
-   // onSearch = (value) => {
-   //    const { apiStoreService, usersLoaded } = this.props;
-   //    const { pageNumber } = this.state;
-   //    apiStoreService.getAllUsers(pageNumber).then((res) => {
-   //       console.log(res);
-   //       usersLoaded(res.users);
-   //       this.setState({
-   //          allUsersCount: res.generalCount,
-   //       });
-   //    });
-   // };
+
+   onSearch = (value) => {
+      const { apiStoreService, usersLoaded } = this.props;
+      const { pageNumber } = this.state;
+      apiStoreService.getAllUsers(pageNumber).then((res) => {
+         console.log(res);
+         usersLoaded(res.users);
+         this.setState({
+            allUsersCount: res.generalCount,
+         });
+      });
+   };
 
    render() {
       const columns = [
          {
-            title: "Name",
+            title: "FirstName",
             dataIndex: "firstName",
-            key: "Firstname",
+            key: "FirstName",
          },
          {
             title: "LastName",
             dataIndex: "lastName",
-            key: "Lastname",
+            key: "LastName",
          },
          {
             title: "Age",

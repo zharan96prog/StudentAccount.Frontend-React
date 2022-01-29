@@ -25,9 +25,9 @@ const requests = {
 const User = {
    register: (user) => requests.post(`/auth/register`, user),
    login: (user) => requests.post(`/auth/login`, user),
-   listUsers: (numberPage) => requests.get(`/user/adminList/${numberPage}`),
-   updateUser: (user) => requests.put("/user/", user),
-   getUserById: (Id) => requests.get(`/user/${Id}`),
+   listUsers: (numberPage) => requests.get(`/auth/allUsers/${numberPage}`),
+   updateUser: (user) => requests.put(`/auth/updateUser`, user),
+   getUserById: (Id) => requests.get(`/auth/getUserById/${Id}`),
 };
 export default class ApiStoreService {
    async register(user) {
